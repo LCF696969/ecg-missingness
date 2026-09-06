@@ -59,6 +59,33 @@
 
 ---
 
+## 模型是怎麼壞的
+
+平均傷害有多大是上面那些曲線在回答。**這一張回答的是「它壞掉的時候，到底發生了什麼事」**——
+三個真實個案，三種不同的機制，兩個方向的錯誤都有。
+
+![failure cases](figures/m6_failure_cases.png)
+
+| | 機制 | 可量測的指紋 | 後果 |
+|---|---|---|---|
+| **A** | 前值填補把 2 秒缺口拉成一條水平線，**異常波形連同缺口一起被抹平** | 最長平坦段 0.03 s → **2.00 s** | 90.2% 確定異常 → 64.0% 確定正常，**漏診** |
+| **B** | 零填補在每個散布的缺點製造一次「跳到 0 再跳回來」 | 15–40 Hz 相對功率 0.128 → **0.331** | 94.4% 確定正常 → 90.2% 確定異常，誤警報 |
+| **C** | 訊號相關缺失優先吃掉高振幅的 QRS，線性內插畫出一條平滑斜坡代替心搏 | 峰對峰振幅 1.65 mV → **0.47 mV** | 94.0% 確定正常 → 97.0% 確定異常，誤警報 |
+
+三件值得注意的事：
+
+1. **B 的指紋直接證實了機制。** 前面說「零填補在散布型最差，是因為它製造高頻人工不連續，
+   而 15–40 Hz 相對功率是模型第二重要的特徵」——這裡量到的是**同一條訊號**上該頻帶功率
+   從 0.128 跳到 0.331（2.6 倍）。這不是看圖說故事。
+2. **傷害是雙向的。** A 是把真實的異常抹掉（漏診），B 和 C 是在正常心電圖上叫出異常（誤警報）。
+   前者在臨床上更危險，而且**補值補得越「平滑」越容易發生**。
+3. **模型在每一個個案裡都很有信心。** 沒有任何一次它表現出猶豫——
+   這正是整個專案的論點：**光看模型自己的信心，看不出資料已經壞了。**
+
+完整數字見 [`results/m6_failure_cases.csv`](results/m6_failure_cases.csv)。
+
+---
+
 ## 資料品質門檻表
 
 基準：無缺失時 AUROC = **0.8894**（PTB-XL fold 10，2158 筆，固定模型）
@@ -165,7 +192,8 @@ ecg-missingness/
 │   ├── m5_experiments.py         主實驗（135＋45 次評估）
 │   ├── m5b_followups.py          延長碎裂掃描、機制檢驗、SQI 重設計
 │   ├── m5c_mechanism_and_gate.py 機制假設檢驗、高傷害守門實驗
-│   └── m6_final_figures_and_table.py  最終圖與門檻表
+│   ├── m6_final_figures_and_table.py  最終圖與門檻表
+│   └── m6_failure_cases.py       失效個案圖（三種機制各一個真實個案）
 ├── demo/
 │   ├── app.py                    Streamlit 互動 demo
 │   ├── sample_pack.npz           40 筆代表樣本（int16 µV，0.67 MB）
@@ -192,6 +220,7 @@ python scripts/m5_experiments.py         # 主實驗（約 67 分鐘）
 python scripts/m5b_followups.py
 python scripts/m5c_mechanism_and_gate.py
 python scripts/m6_final_figures_and_table.py
+python scripts/m6_failure_cases.py      # 失效個案圖
 streamlit run demo/app.py            # 互動 demo
 ```
 

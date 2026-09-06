@@ -1,0 +1,4 @@
+tag,ecg_id,lead,truth,pattern,rate,k,imputer,p_clean,p_dirty,error_kind,metric,metric_clean,metric_imputed
+A,4785,V3,ABNORMAL,burst,0.2,1.0,ffill,0.9016,0.3605,false negative,flat,0.03,2.0
+B,473,V1,NORMAL,scatter,0.2,,zero,0.0558,0.9021,false positive,hf,0.1282,0.331
+C,13025,V2,NORMAL,mnar,0.2,,linear,0.0596,0.9696,false positive,p2p,1.646,0.471
