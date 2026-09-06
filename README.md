@@ -79,7 +79,10 @@
 
 ## 互動 Demo
 
-> 🔗 **線上版：**（部署後補上網址）
+> 🔗 **線上版：** https://ecg-missingness-m98wsaetaho2secxdgtzpg.streamlit.app
+>
+> 部署在 Streamlit Community Cloud。閒置一段時間後 app 會休眠，
+> 第一位訪客可能看到喚醒畫面，按一下等約 30 秒即可。
 
 ```bash
 pip install -r demo/requirements.txt
