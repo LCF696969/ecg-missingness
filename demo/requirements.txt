@@ -1,0 +1,11 @@
+# Streamlit Community Cloud 用這份（不含資料前處理才需要的 wfdb / pyarrow）
+#
+# 版本下限刻意寫得寬鬆：模型以 XGBoost 原生 JSON 格式載入，
+# 那個格式官方保證跨版本相容，所以不需要把版本釘死來遷就 pickle。
+streamlit>=1.30
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+matplotlib>=3.7
+xgboost>=2.0
+joblib>=1.3

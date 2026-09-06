@@ -1,0 +1,17 @@
+ftype,importance
+skew,0.116062246
+relpow_15_40,0.1073581
+min,0.07843794
+relpow_0.5_4,0.076190725
+rms,0.07210226
+zero_cross_rate,0.069994956
+relpow_4_15,0.0648175
+hjorth_activity,0.06206806
+max,0.053225193
+std,0.052025255
+diff_std,0.05105758
+diff_absmean,0.04945318
+hjorth_complexity,0.04206764
+kurtosis,0.03996606
+hjorth_mobility,0.034145027
+mean,0.031028284

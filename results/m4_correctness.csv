@@ -1,0 +1,10 @@
+pattern,method,n_nan,observed_points_changed,pass
+scatter,zero,0,0,True
+scatter,ffill,0,0,True
+scatter,linear,0,0,True
+burst,zero,0,0,True
+burst,ffill,0,0,True
+burst,linear,0,0,True
+mnar,zero,0,0,True
+mnar,ffill,0,0,True
+mnar,linear,0,0,True

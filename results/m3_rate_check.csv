@@ -1,0 +1,16 @@
+pattern,target_rate,actual_rate,abs_error
+scatter,0.025,0.025,0.0
+scatter,0.05,0.05,0.0
+scatter,0.1,0.1,0.0
+scatter,0.2,0.2,0.0
+scatter,0.4,0.4,0.0
+burst,0.025,0.025,0.0
+burst,0.05,0.05,0.0
+burst,0.1,0.1,0.0
+burst,0.2,0.2,0.0
+burst,0.4,0.4,0.0
+mnar,0.025,0.025,0.0
+mnar,0.05,0.05,0.0
+mnar,0.1,0.1,0.0
+mnar,0.2,0.2,0.0
+mnar,0.4,0.4,0.0

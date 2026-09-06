@@ -1,0 +1,39 @@
+# ── 絕對不能外流 ────────────────────────────────────────────
+# PTB-XL 原始資料：好幾 GB，且 PhysioNet 授權不允許轉散布
+data/
+ptb-xl-*/
+records100/
+records500/
+*.npy
+*.dat
+*.hea
+
+# 私人文件（保險用：這些檔案本來就不在 repo 資料夾裡）
+*口試*
+*勿上傳*
+notes/decision_log.md
+notes/clinical_priors.md
+
+# ── 機器相關、不該給別人跑的東西 ───────────────────────────
+# run_m1.bat 裡面寫死了本機的 Python 路徑，換一台電腦就不能用
+run_m1.bat
+*.local.*
+_git_report.txt
+
+# ── 中間產物 ───────────────────────────────────────────────
+results/*.tmp
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini

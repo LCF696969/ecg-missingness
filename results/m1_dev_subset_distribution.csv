@@ -1,0 +1,5 @@
+split,n,n_normal(label=0),n_abnormal(label=1),abnormal_ratio,has_NORM,has_CD,has_MI,has_HYP,has_STTC
+train,2396,1016,1380,0.576,1068,541,635,298,592
+val,301,128,173,0.5748,138,72,73,42,71
+test,303,128,175,0.5776,139,71,80,43,71
+ALL,3000,1272,1728,0.576,1345,684,788,383,734

@@ -1,0 +1,64 @@
+==========================================================================
+M2 — 基線模型   2026-09-04 19:25:44   cache=dev3000
+==========================================================================
+
+[1] 載入快取：X=(3000, 1000, 12), meta=(3000, 12)
+    split 分佈：{'train': 2396, 'test': 303, 'val': 301}
+
+[2] 特徵抽取（每導程 16 個 × 12 導程）
+    完成：(3000, 192)，耗時 21.4s
+    NaN/Inf 檢查：0 / 0
+    train/val/test = 2396/301/303
+
+[3] 訓練 3 個 seed（無缺失，天花板數字）
+    seed=0: test AUROC=0.8689  AUPRC=0.9036  | val AUROC=0.8708 | train AUROC=0.9991 | best_iter=106 | 2.8s
+    seed=1: test AUROC=0.8783  AUPRC=0.9077  | val AUROC=0.8547 | train AUROC=0.9999 | best_iter=136 | 3.4s
+    seed=2: test AUROC=0.8747  AUPRC=0.9093  | val AUROC=0.8649 | train AUROC=1.0000 | best_iter=211 | 4.5s
+
+[4] 彙總（3 seeds）
+    test_auroc    : 0.8740 ± 0.0047
+    test_auprc    : 0.9069 ± 0.0029
+    val_auroc     : 0.8635 ± 0.0081
+    val_auprc     : 0.9068 ± 0.0070
+    train_auroc   : 0.9996 ± 0.0005
+    fit_seconds   : 3.5533 ± 0.8336
+
+[5] 健檢
+    train-test AUROC 落差：0.1257  (正常範圍)
+    測試 AUROC 落在文獻可比範圍內
+
+[6] 特徵重要度（gain，三個 seed 平均）
+            feature  importance
+            II_skew    0.023476
+    V6_relpow_15_40    0.020944
+            V4_skew    0.018926
+    V1_relpow_0.5_4    0.018427
+            III_min    0.013488
+     I_relpow_15_40    0.012890
+    V3_relpow_0.5_4    0.012818
+ V4_zero_cross_rate    0.012032
+    V4_relpow_0.5_4    0.010851
+        V4_diff_std    0.010639
+             II_rms    0.010526
+aVR_hjorth_activity    0.010470
+           aVF_skew    0.009843
+   aVL_relpow_15_40    0.009800
+           aVR_skew    0.009641
+
+    依特徵類型彙總（12 導程加總）：
+      skew                 0.1032
+      relpow_15_40         0.0965
+      relpow_0.5_4         0.0808
+      rms                  0.0687
+      relpow_4_15          0.0654
+      zero_cross_rate      0.0646
+      diff_std             0.0635
+      std                  0.0596
+      max                  0.0588
+      min                  0.0582
+      diff_absmean         0.0564
+      kurtosis             0.0537
+      hjorth_mobility      0.0450
+      hjorth_activity      0.0446
+      hjorth_complexity    0.0424
+      mean                 0.0386

@@ -1,0 +1,7 @@
+tolerance_dAUROC,pattern,max_acceptable_rate,imputer_at_threshold,auroc_at_threshold,recommended_imputer
+0.01,scatter,0.2,ffill,0.8872054316502869,ffill
+0.01,burst,0.2,zero,0.8860822468155408,zero
+0.01,mnar,0.1,zero,0.8848575676081589,ffill
+0.03,scatter,0.4,ffill,0.8788500394244037,ffill
+0.03,burst,0.4,zero,0.8674800296621704,zero
+0.03,mnar,0.1,zero,0.8848575676081589,ffill
