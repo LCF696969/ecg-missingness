@@ -7,33 +7,7 @@
 
 ## 整條路
 
-```mermaid
-flowchart TD
-    A["PTB-XL v1.0.3<br/>21388 筆 · 12 導程 · 100 Hz · 10 秒"]
-    A -->|"官方 strat_fold — 同一病患不跨 fold（自驗：跨集 = 0）"| B1 & B2 & B3
-    B1["fold 1–8　訓練<br/>17084 筆"]
-    B2["fold 9　驗證<br/>2146 筆 · 早停用"]
-    B3["fold 10　測試<br/>2158 筆 · 標籤經人工複核"]
-
-    B1 --> TR["訓練一次<br/>XGBoost 400 棵"]
-    B2 --> TR
-    TR --> M["固定模型：之後一次都沒有重新訓練<br/>192 維手工特徵 · 乾淨基線 AUROC 0.8894"]
-
-    B3 --> C["乾淨訊號<br/>對照組，不動它"]
-    B3 --> D["注入缺失<br/>scatter / burst / MNAR"]
-    D -->|"2.5–40%　k=1…200"| E["補值<br/>zero / ffill / linear"]
-
-    M --> INF["推論：同一個模型 · 同一批 2158 筆樣本<br/>只有「缺失怎麼發生」不同 · 共 213 次評估"]
-    C --> INF
-    E --> INF
-
-    INF --> P["配對 bootstrap → ΔAUROC<br/>乾淨與受損是同一批樣本，配對能消掉共同變異"]
-    P --> O1["資料品質門檻表"] & O2["SQI 守門機制"] & O3["互動 Demo"]
-
-    style M stroke-width:3px
-    style B3 stroke-width:3px
-    style P stroke-width:3px
-```
+![pipeline](figures/m6_pipeline.png)
 
 這張圖要說的只有一件事：**模型只訓練一次就凍結，缺失只在測試端注入，
 而乾淨與受損走的是同一個模型、同一批樣本**——所以兩邊可以配對比較。
