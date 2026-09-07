@@ -127,7 +127,7 @@
 
 ## 互動 Demo
 
-> 🔗 **線上版：** https://ecg-missingness-m98wsaetaho2secxdgtzpg.streamlit.app
+> 🔗 **線上版：** [https://ecg-missingness.streamlit.app](https://ecg-missingness.streamlit.app/)
 >
 > 部署在 Streamlit Community Cloud。閒置一段時間後 app 會休眠，
 > 第一位訪客可能看到喚醒畫面，按一下等約 30 秒即可。
