@@ -1,6 +1,6 @@
 # Demo 使用與判讀說明
 
-線上版：https://ecg-missingness-m98wsaetaho2secxdgtzpg.streamlit.app
+線上版：https://ecg-missingness.streamlit.app
 
 本機執行：
 
