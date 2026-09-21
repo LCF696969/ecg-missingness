@@ -214,6 +214,7 @@ ecg-missingness/
 │   ├── m3_injector.py            注入器的三項驗證＋三宮格圖
 │   ├── m4_imputation.py          補值正確性＋訊號層重建誤差
 │   ├── m5_experiments.py         主實驗（135＋45 次評估）
+│   ├── m5_figures.py             M5 的三張核心圖
 │   ├── m5b_followups.py          延長碎裂掃描、機制檢驗、SQI 重設計
 │   ├── m5c_mechanism_and_gate.py 機制假設檢驗、高傷害守門實驗
 │   ├── m6_final_figures_and_table.py  最終圖與門檻表
