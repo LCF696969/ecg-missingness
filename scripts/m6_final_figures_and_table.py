@@ -143,7 +143,19 @@ def main() -> int:
     fig.tight_layout()
     fig.savefig(config.FIGURES_DIR / "m5_fig4_coverage.png", dpi=150, facecolor="#fcfcfb")
     plt.close(fig)
-    print("圖四（守門）完成")
+
+    # 同一份計算也落地成表，避免「圖跟表用不同算法」造成同一個量有兩個數字。
+    # 早期 m5c 腳本另外寫過一份 m5c_gate_curves.csv，算法不同（未逐 seed 平均），
+    # 與圖四和 README 對不上，已由這裡覆蓋。
+    rows = []
+    for key in ["missing_frac", "flat_frac", "max_gap", "random"]:
+        ys = np.stack([curve(hd[hd.seed == sd].reset_index(drop=True), key)
+                       for sd in [0, 1, 2]])
+        for cv, m_, e_ in zip(covs, ys.mean(0), ys.std(0)):
+            rows.append({"sqi": key, "coverage": round(float(cv), 2),
+                         "auroc_mean": round(float(m_), 4), "auroc_sd": round(float(e_), 4)})
+    pd.DataFrame(rows).to_csv(R / "m5c_gate_curves.csv", index=False)
+    print("圖四（守門）完成，同步覆蓋 m5c_gate_curves.csv（逐 seed 平均 ± 標準差）")
 
     # ================================================= 門檻表
     main_df = runs[runs.group == "main"]

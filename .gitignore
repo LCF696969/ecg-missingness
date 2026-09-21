@@ -22,6 +22,8 @@ _git_report.txt
 
 # ── 中間產物 ───────────────────────────────────────────────
 results/*.tmp
+*.tmp_ignore
+*.tmp.py
 
 # Python
 __pycache__/
